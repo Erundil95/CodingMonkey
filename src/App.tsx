@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SnippetDisplay from './components/SnippetDisplay';
+import TextInput from './components/TextInput';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App: React.FC = () => {
+    const snippet = "const add = (a, b) => a + b;";  // Example snippet
+
+    const handleInputChange = (input: string): void => {
+        console.log("User is typing: ", input);
+    };
+
+    return (
+        <div className="App">
+            <h1>Code Typing Test</h1>
+            <SnippetDisplay snippet={snippet} />
+            <TextInput onInputChange={handleInputChange} snippet={snippet}/>
+        </div>
+    );
+};
 
 export default App;
